@@ -16,33 +16,26 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/koenverburg/project-cli/utils"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
+func runner(cmd *cobra.Command, args []string) {
+  settings := viper.AllSettings()
+  commandSet := utils.GetCommandSet("refresh", settings)
+
+  for _, command := range commandSet {
+    utils.RunCommand(command)
+  }
+}
+
 // refreshCmd represents the refresh command
 var refreshCmd = &cobra.Command{
 	Use:   "refresh",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("refresh called")
-		// if viper.GetString("refresh") == "" {
-		// 	fmt.Printf("refesh is not set")
-		// 	os.Exit(1)
-		// }
-
-		settings := viper.AllSettings()
-		utils.PrettyString(settings)
-	},
+	Short: "A command to refresh the state of the project",
+	Long: "A command to refresh the state of the project",
+	Run: runner,
 }
 
 func init() {

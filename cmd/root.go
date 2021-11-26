@@ -38,9 +38,9 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(viper.AllKeys())
-	},
+	// Run: func(cmd *cobra.Command, args []string) {
+	// 	fmt.Println(viper.AllKeys())
+	// },
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -50,7 +50,6 @@ func Execute() {
 }
 
 func init() {
-	fmt.Println("hii from init")
 	cobra.OnInitialize(initConfig)
 
 	// Here you will define your flags and configuration settings.
@@ -58,8 +57,6 @@ func init() {
 	// will be global for your application.
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.project.yaml)")
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "refresh", "", "List of command to run during a refresh of a git branch")
-	viper.BindPFlag("refresh", rootCmd.PersistentFlags().Lookup("refresh"))
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
