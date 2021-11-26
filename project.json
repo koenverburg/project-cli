@@ -1,0 +1,11 @@
+{
+  "test": "echo 'Hii!!'",
+  "refresh": [
+    "git checkout main",
+    "git pull",
+    "git checkout -",
+    "git rebase main",
+    "rm -rf node_modules",
+    "yarn"
+  ]
+}
