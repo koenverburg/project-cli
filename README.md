@@ -1,4 +1,5 @@
 # Project CLI
+> _This project is still a work in progress but the mvp is working_
 
 Are you tired of forgetting which commands to run or are you annoyed by the to-long-commands-that-do-not-make-any-sense.
 
